@@ -1,0 +1,159 @@
+.lacmus {
+   display: flex;
+   flex-flow: column;
+
+   > * {
+      padding: 0 1em;
+   }
+
+   > div {
+      flex: 0 0 auto;
+      display: flex;
+      flex-flow: column;
+   }
+
+   > div > div:not(.lacmus-loader) {
+      flex: 1 auto;
+      display: flex;
+      align-items: center;
+   }
+
+   label {
+      margin-bottom: 0.5em;
+
+      > * {
+         vertical-align: middle;
+      }
+   }
+
+   input[type=checkbox] {
+      margin-left: 1px;
+   }
+
+   .chzn-container {
+      flex: 1 auto;
+   }
+
+   button {
+      flex: 0 0 auto;
+   }
+
+   .label {
+      margin-right: 5px;
+   }
+
+   > ul,
+   > .lacmus-loader-container {
+      flex: 1 auto;
+      margin: 0;
+      overflow-y: auto;
+      padding-right: 0;
+   }
+
+   > .lacmus-loader-container {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   li {
+      list-style: none;
+      display: flex;
+
+      &:hover {
+         background-color: #e8e8e8;
+      }
+
+      &.lacmus-highlighted,
+      &.lacmus-highlighted:hover {
+         background-color: #ddd;
+      }
+
+      > span {
+         flex: 1 auto;
+         overflow: hidden;
+         white-space: nowrap;
+         text-overflow: ellipsis;
+      }
+
+      > a {
+         padding: 0 1px;
+         cursor: pointer;
+      }
+   }
+}
+
+.lacmus-dialog {
+   position: fixed;
+}
+
+.lacmus-link {
+   background-color: yellowgreen;
+
+   &.lacmus-highlighted {
+      background-color: #139313;
+      color: white;
+   }
+}
+
+.lacmus-link-bad {
+   background-color: #dcdc36;
+
+   &.lacmus-highlighted {
+      background-color: #b99d18;
+      color: white;
+   }
+}
+
+.mw-disambig.lacmus-link span,
+.mw-disambig.lacmus-link-bad span {
+   background-color: inherit;
+}
+
+@-webkit-keyframes lacmus-loader-spin {
+   from {
+      -webkit-transform: rotate(0deg);
+   }
+   to {
+      -webkit-transform: rotate(360deg);
+   }
+}
+
+@keyframes lacmus-loader-spin {
+   from {
+      transform: rotate(0deg);
+   }
+   to {
+      transform: rotate(360deg);
+   }
+}
+
+.lacmus-loader {
+   background-image: -webkit-linear-gradient(transparent, transparent), url(//upload.wikimedia.org/wikipedia/commons/6/6b/Loading_indicator_circle.svg);
+   background-image: linear-gradient(transparent, transparent), url(//upload.wikimedia.org/wikipedia/commons/6/6b/Loading_indicator_circle.svg);
+   background-size: 100% 100%;
+   -webkit-animation-name: lacmus-loader-spin;
+   -webkit-animation-duration: 1.5s;
+   -webkit-animation-iteration-count: infinite;
+   -webkit-animation-timing-function: linear;
+   animation-name: lacmus-loader-spin;
+   animation-duration: 1.5s;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+   backface-visibility: hidden;
+   width: 34px;
+   height: 34px;
+}
+
+.wikiEditor-ui-toolbar .chzn-container {
+   width: 180px;
+   float: left;
+
+   > a {
+      background-color: white !important;
+      background-image: none !important;
+      border-radius: 0px !important;
+      box-shadow: none !important;
+   }
+}
