@@ -134,7 +134,7 @@ function createDialog() {
    dialog($dialog, {
       title: tr('colorerTitle'),
       minHeight: 0,
-   });
+   }, 'replacer');
 
    $interwiki.init();
 

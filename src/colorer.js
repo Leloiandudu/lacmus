@@ -62,7 +62,7 @@ function createDialog(onClose, onShow, onToggle) {
          $loader.hide();
          onClose();
       },
-   });
+   }, 'colorer');
 
    $interwiki.init();
 
