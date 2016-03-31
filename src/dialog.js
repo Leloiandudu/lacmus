@@ -21,7 +21,8 @@ export default function dialog(d, params, key) {
             overflow: 'visible',
          });
          $(d).dialog('widget').css({
-            overflow: 'visible'
+            overflow: 'visible',
+            position: '',
          });
 
          params.open && params.open();
