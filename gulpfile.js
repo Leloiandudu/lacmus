@@ -28,7 +28,8 @@ function createBrowserify() {
    }, watchify.args)).transform('babelify', {
       'presets': [ 'es2015' ],
       'plugins': [ 'transform-runtime', 'transform-async-to-generator' ]
-   }).transform('node-lessify', { textMode: true });
+   }).transform('node-lessify', { textMode: true })
+   .transform('./build/csvToJson');
 }
 
 function runBrowserify(b) {

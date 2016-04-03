@@ -4,6 +4,9 @@ import MwApi from './mwApi';
 import tr from './tr';
 import interwikiSelector from './interwikiSelector';
 import dialog from './dialog';
+import storage from './storage';
+
+const AutostartKey = 'lacmus-colorer-autostart';
 
 export default function colorer() {
    if (!MwApi.isViewing()) {
@@ -14,6 +17,10 @@ export default function colorer() {
       ev.preventDefault();
       showDialog();
    });
+
+   if (storage.get(AutostartKey)) {
+      showDialog();
+   }
 
    return true;
 };
@@ -27,21 +34,23 @@ function getOrAdd(map, key, fn) {
    return value;
 };
 
-function createDialog(onClose, onShow, onToggle) {
+async function createDialog(onClose, onShow, onToggle) {
    const $list = $('<ul>');
    const $interwiki = interwikiSelector();
    const $loader = $('<div>').addClass('lacmus-loader-container').append($('<div>').addClass('lacmus-loader'));
    const $toggle = $('<input>').attr('type', 'checkbox').change(e => onToggle());
 
+   function run() {
+      $list.hide();
+      $loader.show();
+      onShow();
+   };
+
    const $dialog = $('<div>').addClass('lacmus').append(
       $('<div>').append(
          $('<div>').append(
             $interwiki.element,
-            $('<button>').text(tr('show')).button().click(function() {
-               $list.hide();
-               $loader.show();
-               onShow($interwiki.val());
-            })
+            $('<button>').text(tr('show')).button().click(run)
          ),
          $('<div>').append(
             $('<label>').append(
@@ -62,9 +71,9 @@ function createDialog(onClose, onShow, onToggle) {
          $loader.hide();
          onClose();
       },
-   });
+   }, 'colorer');
 
-   $interwiki.init();
+   await $interwiki.init();
 
    return {
       setLinks(list, onClick) {
@@ -96,7 +105,11 @@ function createDialog(onClose, onShow, onToggle) {
       },
       onlyMissing() {
          return $toggle.prop('checked');
-      }
+      },
+      lang() {
+         return $interwiki.val();
+      },
+      run,
    }
 };
 
@@ -118,13 +131,18 @@ async function init() {
    let Lang;
 
    const api = new MwApi();
-   Dialog = createDialog(removeLinks, onShow, showLinks);
+   Dialog = await createDialog(onClose, onShow, showLinks);
 
-   const urlRegex = /^\/wiki\/(.*?)(#.*)?$/
+   if (storage.get(AutostartKey)) {
+      Dialog.run();
+   }
 
-   async function onShow(lang) {
+   async function onShow() {
+      const urlRegex = /^\/wiki\/(.*?)(#.*)?$/
+
+      storage.set(AutostartKey, true);
       removeLinks();
-      Lang = lang;
+      Lang = Dialog.lang();
 
       Links = new Map();
       $('#mw-content-text a').each((i, e) => {
@@ -133,9 +151,14 @@ async function init() {
          const title = decodeURIComponent(url[1]).replace(/_/g, ' ');
          Links.set(e, title);
       });
-      IwLinks = await api.getInterLinks([...new Set(Links.values())], lang);
+      IwLinks = await api.getInterLinks([...new Set(Links.values())], Lang);
       if (Dialog.isOpen())
          showLinks();
+   };
+
+   function onClose() {
+      storage.set(AutostartKey, false);
+      removeLinks();
    };
 
    function showLinks() {

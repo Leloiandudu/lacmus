@@ -1,6 +1,7 @@
 'use strict';
 
 import interwikiMap from './interwikiMap';
+import storage from './storage';
 
 const LangKey = 'lacmus-lang';
 
@@ -9,7 +10,7 @@ export default function interwikiSelector() {
    let inited = false;
 
    function onChanged() {
-      localStorage.setItem(LangKey, $interwiki.val());
+      storage.set(LangKey, $interwiki.val());
    }
 
    return {
@@ -22,7 +23,7 @@ export default function interwikiSelector() {
          $interwiki.chosen();
          
          const interwikis = await interwikiMap();
-         const selected = localStorage.getItem(LangKey);
+         const selected = storage.get(LangKey);
          
          $interwiki.empty();
          for (let [ prefix, language ] of interwikis) {
@@ -42,4 +43,4 @@ export default function interwikiSelector() {
          return $interwiki.val();
       },
    };
-}
+};
