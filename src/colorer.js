@@ -138,7 +138,7 @@ async function init() {
    }
 
    async function onShow() {
-      const urlRegex = /^\/wiki\/(.*?)(#.*)?$/
+      const urlRegex = /\/wiki\/(.*?)(#.*)?$/
 
       storage.set(AutostartKey, true);
       removeLinks();

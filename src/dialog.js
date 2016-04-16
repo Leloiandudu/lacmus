@@ -23,6 +23,7 @@ export default function dialog(d, params, key) {
          $(d).dialog('widget').css({
             overflow: 'visible',
             position: '',
+            right: 'auto', // fix for RTL wikis
          });
 
          params.open && params.open();
