@@ -1,7 +1,7 @@
-key,en,ru,eo,be
-colorerTitle,Links with interwikis,Ссылки с интервиками,Ligiloj kun intervikioj,Спасылкі з інтэрвікамі
-replacerTitle,Wikilinks translation,Перевод вики-ссылок,Tradukado de vikiligiloj,Пераклад вікі-спасылак
-show,Show,Показать,Montru,Паказаць
-translate,Translate,Перевести,Traduku,Перакласці
-toggle,without interwikis,без интервик,sen intervikioj,без інтэрвік
-source,Source:,Источник:,Fonto:,Крыніца:
+key,en,ru,eo,be,uk
+colorerTitle,Links with interwikis,Ссылки с интервиками,Ligiloj kun intervikioj,Спасылкі з інтэрвікамі,Посилання з інтервікі
+replacerTitle,Wikilinks translation,Перевод вики-ссылок,Tradukado de vikiligiloj,Пераклад вікі-спасылак,Переклад вікі-посилань
+show,Show,Показать,Montru,Паказаць,Показати
+translate,Translate,Перевести,Traduku,Перакласці,Перекласти
+toggle,without interwikis,без интервик,sen intervikioj,без інтэрвік,без інтервік
+source,Source:,Источник:,Fonto:,Крыніца:,джерело:
