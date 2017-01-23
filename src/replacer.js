@@ -83,7 +83,7 @@ function fixCase(text, referenceText) {
 
 async function init() {
    const title = tr('replacerTitle');
-   const icon = '//upload.wikimedia.org/wikipedia/commons/b/b3/Translation_icon.svg';
+   const icon = '//upload.wikimedia.org/wikipedia/commons/4/43/OOjs_UI_icon_language-ltr.svg';
 
    if (mwToolbar.isNewToolbar()) {
       const $toolbar = await mwToolbar.addNewToolbarSection('lacmus', title);
