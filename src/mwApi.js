@@ -109,13 +109,11 @@ MwApi.getUserLanguage = function getUserLanguage() {
 };
 
 MwApi.getCrossWikiUrl = function getCrossWikiUrl(prefix, title) {
-   return mw.config.get('wgContentTranslationSiteTemplates').view
-      .replace('$1', prefix).replace('$2', title);
+   return `https://${prefix}.wikipedia.org/wiki/${title}`;
 };
 
 MwApi.getCrossWikiApiUrl = function getCrossWikiUrl(prefix) {
-   return mw.config.get('wgContentTranslationSiteTemplates').api
-      .replace('$1', prefix);
+   return `https://${prefix}.wikipedia.org/w/api.php`;
 };
 
 MwApi.isViewing = function isViewing() {
