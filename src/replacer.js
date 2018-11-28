@@ -104,14 +104,13 @@ async function init() {
       );
       $interwiki.init();
    } else {
-      if (mwToolbar.isToolbarEnabled()) {
-         await mwToolbar.addOldToolbarButton(showDialog, title, icon);
-      } else {
-         mw.util.addPortletLink('p-tb', '#', title).addEventListener('click', function(ev) {
-            ev.preventDefault();
-            showDialog();
-         });
-      }
+      mw.util.addPortletLink('p-tb', '#', title).addEventListener('click', function(ev) {
+         ev.preventDefault();
+         showDialog();
+      });
+      mw.hook('legacy.toolbar.ready').add(function() {
+         mwToolbar.addOldToolbarButton(showDialog, title, icon);
+      });
    }
 };
 
