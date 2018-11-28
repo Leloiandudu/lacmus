@@ -9,7 +9,8 @@ var notify = require('gulp-notify');
 var argv = require('yargs').argv;
 var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
-var pkg = require('./package.json')
+var insert = require('gulp-insert');
+var pkg = require('./package.json');
 
 const userscriptPrologue = `// ==UserScript==
 // @name        ${pkg.name}
@@ -18,7 +19,10 @@ const userscriptPrologue = `// ==UserScript==
 // @grant       none
 // ==/UserScript==
 
+setTimeout(() => {
 `;
+
+const userscriptEpilogue = `}, 1000)`;
 
 function createBrowserify() {
    return browserify(Object.assign({
@@ -40,6 +44,7 @@ function runBrowserify(b) {
       .on('error', notify.onError())
       .pipe(gulpif(release, source(`${pkg.name}.js`), userscript(`${pkg.name}.user.js`)))
       .pipe(buffer())
+      .pipe(gulpif(!release, insert.append(userscriptEpilogue)))
       .pipe(gulpif(release, uglify()))
       .pipe(gulp.dest(release ? './dist/' : `${argv.userscript}/gm_scripts/${pkg.name}/`));
 }

@@ -6,17 +6,11 @@ function toPromise(deferred) {
    });
 };
 
-export function isToolbarEnabled() {
-   return mw.user.options.get('showtoolbar') === 1;
-};
-
 export function isNewToolbar() {
    return mw.user.options.get('usebetatoolbar') === 1;
 };
 
-export async function addOldToolbarButton(cb, title, icon) {
-   await toPromise($.when(mw.loader.using('mediawiki.toolbar'), $.ready));
-
+export function addOldToolbarButton(cb, title, icon) {
    let $toolbar = $('#gadget-toolbar');
    if (!$toolbar.length) {
       $toolbar = $('#toolbar');
