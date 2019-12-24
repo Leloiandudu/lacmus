@@ -13,7 +13,7 @@ gulp
 builds and minifies the script to `./dist/Lacmus.js`
 
 ```
-gulp --usercript /path/to/firefox/profile/
+gulp --userscript /path/to/firefox/profile/
 ```
 
 builds the script as a [userscript](http://wiki.greasespot.net/User_script) to `/path/to/firefox/profile/gm_scripts/Lacmus/Lacmus.user.js`.
