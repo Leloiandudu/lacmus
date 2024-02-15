@@ -24,5 +24,8 @@
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0",
     "yargs": "^4.3.2"
+  },
+  "overrides": {
+    "graceful-fs": "^4.2.11"
   }
 }
