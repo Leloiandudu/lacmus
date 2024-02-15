@@ -1,7 +1,7 @@
-key,en,ru,eo,be,uk,ka
-colorerTitle,Links with interwikis,Ссылки с интервиками,Ligiloj kun intervikioj,Спасылкі з інтэрвікамі,Посилання з інтервікі,ბმულები ინტერვიკებთან
-replacerTitle,Wikilinks translation,Перевод вики-ссылок,Tradukado de vikiligiloj,Пераклад вікі-спасылак,Переклад вікі-посилань,ვიკი-ბმულების თარგმანი
-show,Show,Показать,Montru,Паказаць,Показати,ჩვენება
-translate,Translate,Перевести,Traduku,Перакласці,Перекласти,თარგმნა
-toggle,without interwikis,без интервик,sen intervikioj,без інтэрвік,без інтервік,ინტერვიკების გარეშე
-source,Source:,Источник:,Fonto:,Крыніца:,джерело:,წყარო:
+key,en,ru,eo,be,uk,ka,id,ms
+colorerTitle,Links with interwikis,Ссылки с интервиками,Ligiloj kun intervikioj,Спасылкі з інтэрвікамі,Посилання з інтервікі,ბმულები ინტერვიკებთან,Pranala antarbahasa,Pautan antara bahasa
+replacerTitle,Wikilinks translation,Перевод вики-ссылок,Tradukado de vikiligiloj,Пераклад вікі-спасылак,Переклад вікі-посилань,ვიკი-ბმულების თარგმანი,Terjemahan pranala,Terjemahan pautan
+show,Show,Показать,Montru,Паказаць,Показати,ჩვენება,Tunjuk,Tunjuk
+translate,Translate,Перевести,Traduku,Перакласці,Перекласти,თარგმნა,Terjemahkan,Terjemahkan
+toggle,without interwikis,без интервик,sen intervikioj,без інтэрвік,без інтервік,ინტერვიკების გარეშე,tanpa pranala antarbahasa,tanpa pautan interwiki
+source,Source:,Источник:,Fonto:,Крыніца:,джерело:,წყარო:,Sumber:,Sumber:
