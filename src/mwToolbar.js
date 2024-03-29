@@ -1,8 +1,8 @@
 'use strict';
 
-function toPromise(deferred) {
-   return new Promise(function(resolve, reject) {
-      deferred.then(resolve, reject);
+function toPromise(hook) {
+   return new Promise(function(resolve) {
+      hook.add(resolve);
    });
 };
 
@@ -35,7 +35,7 @@ export function addOldToolbarButton(cb, title, icon) {
 };
 
 export async function addNewToolbarSection(id, title) {
-   await toPromise($.when(mw.loader.using('ext.wikiEditor.toolbar'), $.ready));
+   await toPromise(mw.hook('wikiEditor.toolbarReady'));
 
    $('#wpTextbox1').wikiEditor('addToToolbar', {
       'sections': {

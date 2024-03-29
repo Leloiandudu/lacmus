@@ -90,7 +90,10 @@ async function init() {
       const $interwiki = interwikiSelector();
       $toolbar.append(
          $('<span>').addClass('label').text(tr('source')),
-         $interwiki.element,
+         $('<div>').css({
+            display: 'inline-flex',
+            alignItems: 'center',
+         }).append($interwiki.element),
          $('<a>')
             .addClass('tool-button')
             .attr('title', tr('translate'))
