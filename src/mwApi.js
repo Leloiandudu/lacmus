@@ -6,7 +6,7 @@ export default function MwApi(url) {
    const Api = new mw.Api({
       ajax: {
          headers: { "Api-User-Agent": `${pkg.name}/${pkg.version}` },
-         url: url && `${url}?origin=${window.location.origin}`,
+         url: url ? `${url}?origin=${window.location.origin}` : mw.util.wikiScript('api'),
       }
    });
 
