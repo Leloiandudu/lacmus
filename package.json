@@ -1,6 +1,6 @@
 {
   "name": "Lacmus",
-  "version": "1.7",
+  "version": "1.8",
   "private": "true",
   "description": "Finds interwikis in the article",
   "dependencies": {},
